@@ -21,7 +21,7 @@ RF24 radio(7,8);
  
 uint8_t col[2];
 uint8_t rows;
-String state;
+String state="disarmed";
 
 struct MyData {
   byte throttle;
@@ -70,7 +70,7 @@ void setup()
   oled.println("");
   
   oled.println("@vic7z");
-  delay(2000);
+  delay(1000);
   
   resetData();
   oled.clear();
@@ -110,7 +110,7 @@ void loop()
 
   radio.write(&data, sizeof(MyData));
 
- int per = map(data.throttle, 0, 255, 0, 100);
+  int per = map(data.throttle, 0, 255, 0, 100);
   
   
     oled.clearField(col[0%2], rows*(0/2), 4);    
@@ -138,21 +138,17 @@ void loop()
   
     oled.println();
     oled.println();
-    oled.print("voltage  :");
-    oled.print(vo);
-    oled.print("v");
+    oled.print("voltage  :" + (String)vo+ "v");
     oled.println();
-    oled.print("throttle :" );
-    oled.print(per);
-    oled.println(" %");
-     if(data.throttle==0 && data.pitch==0){
-         state="armed   ";
-         
-    }
+    oled.print("throttle :" + (String)per + "%" );
 
+    if(data.throttle==0 && data.pitch==0){
+         state="armed   ";     
+    }
     if(data.throttle==0 && data.pitch==0 && data.yaw==0 && data.roll==0){
       state="disarmed";
     }
+
     oled.print("motor :");
     oled.println(state);
 
