@@ -18,9 +18,8 @@
         },
         {
             "name": "Arduino",
-            "compilerPath": "/home/vic/Downloads/arduino-1.8.13/hardware/tools/avr/bin/avr-g++",
+            "compilerPath": "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\bin\\avr-g++",
             "compilerArgs": [
-                "-w",
                 "-std=gnu++11",
                 "-fpermissive",
                 "-fno-exceptions",
@@ -31,23 +30,23 @@
             ],
             "intelliSenseMode": "gcc-x64",
             "includePath": [
-                "/home/vic/Downloads/arduino-1.8.13/hardware/arduino/avr/cores/arduino",
-                "/home/vic/Downloads/arduino-1.8.13/hardware/arduino/avr/variants/eightanaloginputs",
-                "/home/vic/Downloads/arduino-1.8.13/hardware/arduino/avr/libraries/SPI/src",
-                "/home/vic/Arduino/libraries/RF24",
-                "/home/vic/Downloads/arduino-1.8.13/libraries/Servo/src",
-                "/home/vic/Downloads/arduino-1.8.13/hardware/tools/avr/lib/gcc/avr/7.3.0/include",
-                "/home/vic/Downloads/arduino-1.8.13/hardware/tools/avr/lib/gcc/avr/7.3.0/include-fixed",
-                "/home/vic/Downloads/arduino-1.8.13/hardware/tools/avr/avr/include"
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\variants\\eightanaloginputs",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\libraries\\SPI\\src",
+                "C:\\Users\\dorae\\OneDrive\\Documents\\Arduino\\libraries\\RF24",
+                "C:\\Program Files (x86)\\Arduino\\libraries\\Servo\\src",
+                "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include",
+                "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include-fixed",
+                "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\avr\\include"
             ],
             "forcedInclude": [
-                "/home/vic/Downloads/arduino-1.8.13/hardware/arduino/avr/cores/arduino/Arduino.h"
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
             ],
             "cStandard": "c11",
             "cppStandard": "c++11",
             "defines": [
                 "F_CPU=16000000L",
-                "ARDUINO=10813",
+                "ARDUINO=10819",
                 "ARDUINO_AVR_PRO",
                 "ARDUINO_ARCH_AVR",
                 "__DBL_MIN_EXP__=(-125)",
