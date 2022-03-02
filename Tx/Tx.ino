@@ -13,6 +13,7 @@
 #define j2y A3
 #define j2b 3
 #define voltage A7
+
 const uint64_t pipeOut = 0xE8E8F0F0E1LL;
 
 SSD1306AsciiWire oled;
@@ -98,7 +99,7 @@ void loop()
 { 
  
  float value = analogRead(voltage);
- float vo  = value * (5.00 / 1023.00) * 2;
+ float vo  = value * (5.00 / 1023.00) ;
  
 
   data.throttle = map( analogRead(j1x), 0, 1023, 0, 255 );
@@ -140,8 +141,9 @@ void loop()
     oled.println();
     oled.print("voltage  :" + (String)vo+ "v");
     oled.println();
-    oled.print("throttle :" + (String)per + "%" );
-
+    oled.print("throttle :" + (String)per );
+    oled.print("%");
+    oled.println();
     if(data.throttle==0 && data.pitch==0){
          state="armed   ";     
     }

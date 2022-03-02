@@ -2,13 +2,16 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 #include <Servo.h>
-
 const uint64_t pipeIn = 0xE8E8F0F0E1LL; 
 
-#define motorPin 3
-#define servoPin 2
+#define thro 6
+#define ser 5
+bool motorarm=false;
 
-RF24 radio(2,4);
+RF24 radio(7,8);
+
+int throttle = 0;
+
 Servo servo;
 
 struct MyData {
@@ -25,7 +28,7 @@ MyData data;
 void resetData()
 {
 
-    data.throttle = 0;
+    data.throttle = 129;
     data.yaw = 127;
     data.pitch = 127;
     data.roll = 127;
@@ -35,18 +38,26 @@ void resetData()
 }
 
 
-void setup(){
+void setup()
+{
+    Serial.begin(9600);
+
+    resetData();
     radio.begin();
     radio.setAutoAck(false);
     radio.setDataRate(RF24_250KBPS);
     radio.openReadingPipe(1,pipeIn);
     radio.startListening();
 
-    servo.attach(servoPin);
+    
+    servo.attach(ser);
+   
+
 }
 
+
+
 unsigned long lastRecvTime = 0;
-bool motorarm=false;
 
 void recvData()
 {
@@ -56,15 +67,19 @@ void recvData()
         }
 }
 
-void loop(){
+
+void loop()
+{
     recvData();
     unsigned long now = millis();
-    
+
     if ( now - lastRecvTime > 1000 ) {
+
             resetData();
     }
     
-    if (data.AUX1==1 && data.AUX2==1)
+
+    if (data.throttle==0 && data.pitch==0)
     {
         motorarm=!motorarm;
     }
@@ -72,11 +87,13 @@ void loop(){
     if (motorarm)
     {
         int pwm=data.pitch+data.throttle;
-        pwm=map(pwm,255,510,0,255);
-        analogWrite(motorPin,pwm);
+        if(pwm<255){
+            pwm=255;
+        }
+        pwm=map(pwm,254,510,0,255);
+        analogWrite(thro,pwm);
         servo.write(data.roll);
+        Serial.print("Throttle: ");  Serial.print(pwm);        Serial.print("    ");
+        Serial.print("Pitch: ");     Serial.print(data.roll);  Serial.print("\n");
     }
-    
-    
 }
-

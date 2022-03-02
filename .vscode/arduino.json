@@ -1,6 +1,6 @@
 {
     "configuration": "cpu=16MHzatmega328",
     "board": "arduino:avr:pro",
-    "sketch": "RxBoat\\Rx_rcboat.ino",
-    "port": "COM1"
+    "sketch": "Rx\\Rx.ino",
+    "port": "COM3"
 }
